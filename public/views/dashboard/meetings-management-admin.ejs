@@ -1,0 +1,70 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <!-- Modal -->
+    <div class="modal fade" id="meetingModal" tabindex="-1" aria-labelledby="modalMeeting" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalMeeting"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAddMeeting">
+                    <div class="form-group">
+                        <label for="">Title:</label>
+                        <input type="text" name="title" id="title" class="form-control">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="">Token:</label>
+                        <input type="text" name="token" id="token" class="form-control">
+                    </div> -->
+                
+            </div>
+            <div class="modal-footer">
+            <button type="submit" id="btnSaveMeeting" class="btn btn-primary">Save</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="card-header py-3">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#meetingModal">
+            Tambah Data
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Meeting Title</th>
+                        <!-- <th>Token</th> -->
+                        <th>Url</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% data.meetings.forEach((value, index) => { %>
+                    <tr>
+                        <td><%= value.meeting_title %></td>
+                        <!-- <td><%= value.meeting_token %></td> -->
+                        <td><%= value.meeting_url %></td>
+                        <td>
+                            <a href="/join/<%= value.meeting_url %>">Meet Now</a> ||
+                            <a href="/meetings-management/delete/<%= value.id %>">Hapus</a> ||
+                            <a data-link="<%= value.meeting_url %>" href="javascript:void(0)" id="shareBtn">Share Link</a>
+                        </td>
+                        <!-- <td>
+                            
+                        </td> -->
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

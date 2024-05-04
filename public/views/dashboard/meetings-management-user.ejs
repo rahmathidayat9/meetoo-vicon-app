@@ -1,0 +1,35 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Meeting Title</th>
+                        <!-- <th>Token</th> -->
+                        <th>Url</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% data.meetings.forEach((value, index) => { %>
+                    <tr>
+                        <td><%= value.meeting_title %></td>
+                        <!-- <td><%= value.meeting_token %></td> -->
+                        <td><%= value.meeting_url %></td>
+                        <td>
+                            <a href="/join/<%= value.meeting_url %>">Meet Now</a>
+                        </td>
+                        <!-- <td>
+                            
+                        </td> -->
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

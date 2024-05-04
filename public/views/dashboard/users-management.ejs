@@ -1,0 +1,80 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <!-- Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="modalUser" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalUser"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAddUser">
+                    <div class="form-group">
+                        <label for="">Nama:</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Username:</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password:</label>
+                        <input type="text" name="password" id="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Role:</label>
+                        <select type="select" name="role" id="role" class="form-control">
+                            <option value="" selected disabled>- PILIH ROLE -</option>
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+            <button type="submit" id="btnSaveMeeting" class="btn btn-primary">Save</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="card-header py-3">
+        <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
+            Tambah Data
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% data.users.forEach((value, index) => { %>
+                    <tr>
+                        <td><%= value.name %></td>
+                        <td><%= value.username %></td>
+                        <td><%= value.role %></td>
+                        <td>
+                            <a href="/users-management/delete/<%= value.id %>">Hapus</a> ||
+                            <a href="javscript:void(0)" id="btnEditUser" data-id="<%= value.id %>">Edit</a>
+
+                        </td>
+                    </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
