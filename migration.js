@@ -18,6 +18,10 @@ const migrate = async () => {
     );
 
     await database.query(
+      "INSERT INTO users (name, username, password, role) VALUES ('Che Guevara', 'che', 'che', 'user');"
+    );
+
+    await database.query(
         "CREATE TABLE meetings (id INT AUTO_INCREMENT PRIMARY KEY,meeting_title VARCHAR(255),meeting_token VARCHAR(255),meeting_url VARCHAR(255))"
     );
 

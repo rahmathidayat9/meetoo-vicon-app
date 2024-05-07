@@ -180,8 +180,37 @@
         <script defer src="../js/newRoom.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             $(document).ready(function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+
+                let toastTitle = null
+                let toastIcon = null
+
+                if (typeof window.localStorage.user_name !== 'undefined') {
+                    toastTitle = "Welcome "+window.localStorage.user_name
+                    toastIcon = 'success'
+                } else {
+                    toastTitle = 'Who are you ?'
+                    toastIcon = 'error'
+                }
+                
+                Toast.fire({
+                    icon: toastIcon,
+                    title: toastTitle,
+                });
+                
                 function redirectToLogin() {
                     document.location.href = '/auth-login'
                 }
